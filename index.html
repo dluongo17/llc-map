@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>PMTiles Map</title>
-
+  <meta charset="utf-8" />
+  <title>PMTiles Map</title>
+  <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@3.5.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
 <script type="module">
   import * as pmtiles from "https://cdn.jsdelivr.net/npm/pmtiles@3.4.1/dist/index.js";
   import maplibregl from "https://cdn.jsdelivr.net/npm/maplibre-gl@3.5.2/dist/maplibre-gl.js";
 
-  // Attach MapLibre to window so the rest of the script can find it
-  window.maplibregl = maplibregl;
-
-  // Register PMTiles protocol
   const protocol = new pmtiles.Protocol();
   maplibregl.addProtocol("pmtiles", protocol.tile);
-
-  // Point to your PMTiles file
-  const p = new pmtiles.PMTiles("llc.pmtiles");
 
   const map = new maplibregl.Map({
     container: "map",
@@ -33,7 +33,7 @@
           id: "llc-fill",
           type: "fill",
           source: "llc",
-          "source-layer": "lad",
+          "source-layer": "CUsersdavidDownloadsllc2025",
           paint: {
             "fill-color": [
               "match",
@@ -50,17 +50,5 @@
     zoom: 10
   });
 </script>
-
-<link href="https://cdn.jsdelivr.net/npm/maplibre-gl@3.5.2/dist/maplibre-gl.css" rel="stylesheet" />
-
-<style>
-  body { margin: 0; padding: 0; }
-  #map { width: 100vw; height: 100vh; }
-</style>
-
-</head>
-
-<body>
-<div id="map"></div>
 </body>
 </html>
